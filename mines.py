@@ -104,12 +104,13 @@ def start():
             #tag boxs which are mines as mine
             if cev in randlist:
                 canvas.itemconfig(new_cell, tags=('mine',str(cev),'cells'))           
-    #
+    #searches all boxes or cells to see proximity to mine(s)
     for items in canvas.find_withtag('cells'):
         ite = str(int(items))
         itemcount = 0
         global size
         er = str(size)
+        #narrows down search to only boxes that are not mines
         if 'mine' not in canvas.gettags(canvas.find_withtag(ite)):
             if 'mine' in canvas.gettags(canvas.find_withtag(str(int(items)-1))):
                 if er in canvas.gettags(canvas.find_withtag(str(int(items)+1))):
@@ -117,7 +118,7 @@ def start():
                 else:
                     itemcount=itemcount+1
             if 'mine' in canvas.gettags(canvas.find_withtag(str(int(items)+1))):
-                if er in canvas.gettags(canvas.find_withtag(str(int(items)+1))):
+                if er in canvas.gettags(canvas.find_withtag(str(int(items)-1))):
                     itemcount = itemcount
                 else:
                     itemcount=itemcount+1
@@ -125,8 +126,10 @@ def start():
                 itemcount=itemcount+1
             if 'mine' in canvas.gettags(canvas.find_withtag(str(int(items)+size))):
                 itemcount=itemcount+1
+            #resets tags to only be how many mines are narby 
             canvas.itemconfig(canvas.find_withtag(ite), tags = (str(itemcount))) 
 
+#creates button to reset game board
 reboot = tkinter.Button(root, text='Click To Start or Restart', command=start, font=('Tempus Sans ITC', 12, 'bold'), background='#a3a3a3', foreground='#4503E8')
 reboot.grid(row = 0, column = 0, columnspan = 2)  
 
