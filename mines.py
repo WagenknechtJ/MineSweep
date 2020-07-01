@@ -19,11 +19,11 @@ inst = tkinter.Label(root, bg = '#999999', font =('Tempus Sans ITC', 10, 'bold')
 inst.grid(row = 3,column = 0, rowspan = 2, columnspan=2)
 
 #set starting variables
-size = 5 '''how many boxes are in a row '''
-d=380/int(size) '''how big the boxes are based on how many must fit in the screen (set to fit a raspberry pi touchscreen currently)'''
-diffm = (size*size)/4 '''median difficulty, based on how many total boxes there are'''
-diff = int(diffm) '''difficulty (determined by how many of the boxes are mines)'''
-grided = size*size '''how many total boxes there are, based on how many boxes are in a row (creating a square)'''
+size = 5 # how many boxes are in a row
+d=380/int(size) # how big the boxes are based on how many must fit in the screen (set to fit a raspberry pi touchscreen currently)
+diffm = (size*size)/4 #median difficulty, based on how many total boxes there are
+diff = int(diffm) #difficulty (determined by how many of the boxes are mines)
+grided = size*size #how many total boxes there are, based on how many boxes are in a row (creating a square)
 
 #create moving variable for the slider controlling how many boxes are in a row, setting it at first as the original baseline number 
 sizei = tkinter.IntVar()
@@ -90,7 +90,7 @@ def start():
     global score
     score = 0
     canvas.delete(ALL)
-    randlist = random.sample(range(1,(size*size)+1),int(diff)) '''pick which boxes will be mines'''
+    randlist = random.sample(range(1,(size*size)+1),int(diff)) #pick which boxes will be mines
     #create all boxes, and tag them with their position (numerically)
     for colum in range(1,size+1):
         cob = colum - 1
