@@ -19,6 +19,7 @@ inst = tkinter.Label(root, bg = '#999999', font =('Tempus Sans ITC', 10, 'bold')
 inst.grid(row = 3,column = 0, rowspan = 2, columnspan=2)
 
 #set starting variables
+global size 
 size = 5 # how many boxes are in a row
 d=380/int(size) # how big the boxes are based on how many must fit in the screen (set to fit a raspberry pi touchscreen currently)
 diffm = (size*size)/4 #median difficulty, based on how many total boxes there are
@@ -105,10 +106,10 @@ def start():
             if cev in randlist:
                 canvas.itemconfig(new_cell, tags=('mine',str(cev),'cells'))           
     #searches all boxes or cells to see proximity to mine(s)
+    
     for items in canvas.find_withtag('cells'):
         ite = str(int(items))
         itemcount = 0
-        global size
         er = str(size)
         #narrows down search to only boxes that are not mines
         if 'mine' not in canvas.gettags(canvas.find_withtag(ite)):
