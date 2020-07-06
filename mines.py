@@ -1,3 +1,5 @@
+#made in 2018 for PLTW Intro to Programming; comments added recently for clarity. Not the pinnacle of proper coding...
+
 import tkinter
 from tkinter import *
 import random
