@@ -127,7 +127,7 @@ def start():
                 itemcount=itemcount+1
             if 'mine' in canvas.gettags(canvas.find_withtag(str(int(items)+size))):
                 itemcount=itemcount+1
-            #resets tags to only be how many mines are narby 
+            #resets tags to only be how many mines are nearby 
             canvas.itemconfig(canvas.find_withtag(ite), tags = (str(itemcount))) 
 
 #creates button to reset game board
